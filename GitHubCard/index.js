@@ -2,6 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+const entryPoint = document.querySelector(".cards");
 
  axios.get('https://api.github.com/users/kfiruza')
  .then(response => {
@@ -38,14 +39,16 @@
 */
 
 const followersArray = [
-  'https://api.github.com/users/ErikRodriguez-webdev', 
-  'https://api.github.com/users/brandi-jones',
-  'https://api.github.com/users/Devin44G',
-  'https://api.github.com/users/kfiruza'
+  'ErikRodriguez-webdev', 
+  'brandi-jones',
+  'Devin44G',
+  'kfiruza'
+
 ];
+ const url ='https://api.github.com/users/'
 
 followersArray.forEach(object => {
-axios.get(object)
+axios.get(url + object)
 .then(response => {
   console.log(response.data);
   const newCard = cardCreator(response.data);
@@ -135,4 +138,3 @@ function cardCreator(profile) {
   return newCard;
 }
 
-const entryPoint = document.querySelector(".cards");
